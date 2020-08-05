@@ -10,7 +10,7 @@ CREATE TABLE department (
   name VARCHAR (30) NOT NULL,
   PRIMARY KEY (DeptID)
 );
-
+ 
 -- -- role:
 
 CREATE TABLE role (
@@ -23,11 +23,16 @@ CREATE TABLE role (
 );
 -- -- employee:
 
--- CREATE TABLE employee (
---   id INT NOT NULL AUTO_INCREMENT,
---   first_name VARCHAR (30) NOT NULL,
---   last_name VARCHAR (30) NOT NULL,
---   role_id - INT NOT NULL, 
--- -- manager_id - INT to hold reference to another employee that manager of the current employee. This field may be null if the employee has no manager
---   PRIMARY KEY (id)
--- );
+CREATE TABLE employee (
+  EmployeeID INT NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR (30) NOT NULL,
+  last_name VARCHAR (30) NOT NULL,
+  RoleID INT NOT NULL,
+--   ManagerID INT NULL RoleID = ManagerID AND RoleID = 1
+  PRIMARY KEY (EmployeeID),
+  FOREIGN KEY (RoleID) REFERENCES role (RoleID)
+-- -- manager_id - INT 
+-- to hold reference to another employee 
+-- that is manager of the current employee. 
+-- This field may be null if the employee has no manager
+);
