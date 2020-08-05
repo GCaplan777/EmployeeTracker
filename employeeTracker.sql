@@ -13,14 +13,14 @@ CREATE TABLE department (
 
 -- -- role:
 
--- CREATE TABLE role (
---   RoleID INT NOT NULL AUTO_INCREMENT,
---   title VARCHAR (30) NOT NULL,
---   salary DECIMAL(10,2) NOT NULL,
---   DeptID INT NOT NULL,
---   PRIMARY KEY (RoleID),
---   FOREIGN KEY (DeptID) REFERENCES department (DeptID)
--- );
+CREATE TABLE role (
+  RoleID INT NOT NULL AUTO_INCREMENT,
+  title VARCHAR (30) NOT NULL,
+  salary DECIMAL(10,2) NOT NULL,
+  DeptID INT NOT NULL,
+  PRIMARY KEY (RoleID),
+  FOREIGN KEY (DeptID) REFERENCES department (DeptID)
+);
 -- -- employee:
 
 -- CREATE TABLE employee (
