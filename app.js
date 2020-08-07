@@ -25,14 +25,44 @@ connection.connect((err) => {
   start();
 });
 
-const start = () => {
-  console.log("The app is started.");
+const start = async () => {
+  const { choice } = await inquirer.prompt({
+    name: "choice",
+    message: "What would you like to do?",
+    type: "rawlist",
+    choices: [
+      "View All Employees",
+      "View All Employees By Department",
+      "View ALl Employees By Manager",
+      "Add Employee",
+      "Remove Employee",
+      "Update Employee Role",
+      "Update Employee Manager",
+      "Exit",
+    ],
+  });
+  console.log(choice);
 };
 
-// // Start
-// const start = async () => {
-//   const userChoice = await inquirer.prompt();
-// };
+// switch case based on user input to pick what to do next
+switch (choice) {
+  case "View All Employees":
+    return viewAllEmployees();
+  case "View All Employees By Department":
+    return viewAllEmployeesByDept();
+  case "View ALl Employees By Manager":
+    return viewAllEmployeesByManager();
+  case "Add Employee":
+    return addEmployee();
+  case "Remove Employee":
+    return removeEmployee();
+  case "Update Employee Role":
+    return updateEmployeeRole();
+  case "Update Employee Manager":
+    return updateEmployeeManager();
+  default:
+    connection.end();
+}
 
 // allows the user to:
 
