@@ -79,19 +79,64 @@ function viewAllEmployees() {
 }
 
 // viewAllEmployeesByDept
-const viewAllEmployeesByDept = () => {};
+// // right now, all employee view, sorted by Dept. Perhaps use inquirer for user to choose by Dept?
+function viewAllEmployeesByDept() {
+  connection.query(
+    "SELECT  employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, CONCAT(manager.first_name,' ', manager.last_name) AS manager FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department on role.department_id = department.id  LEFT JOIN employee manager ON employee.manager_id = manager.id ORDER BY department",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      start();
+    }
+  );
+}
 
 // viewAllEmployeesByManager
-const viewAllEmployeesByManager = () => {};
+// right now, all employee view, sorted by Manager. Perhaps use inquirer for user to choose by Manager?
+function viewAllEmployeesByManager() {
+  connection.query(
+    "SELECT  employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, CONCAT(manager.first_name,' ', manager.last_name) AS manager FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department on role.department_id = department.id  LEFT JOIN employee manager ON employee.manager_id = manager.id ORDER BY manager",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      start();
+    }
+  );
+}
 
 // addEmployee
-const addEmployee = () => {};
+// I have my CRUD create method commented below BUT
+// perhaps use INQUIRER to prompt user to add each line of data?
+// insert into Table with loop?
+
+// function addEmployee() {
+//   console.log("Inserting a new employee...\n");
+//   var query = connection.query(
+//     "INSERT INTO employee SET ?",
+//     {
+//       first_name: "Charles",
+//       last_name: "Barkley",
+//       role_id: 3,
+//       manager_id: 1,
+//     },
+//     function (err, res) {
+//       if (err) throw err;
+//       console.log(res.affectedRows + " product inserted!\n");
+//       // Call updateProduct AFTER the INSERT completes
+
+//     }
+//   );
 
 // removeEmployee
 const removeEmployee = () => {};
+// create prompt for user to select by employee by ID.
+// Use CRUD delete method and perhaps loop to filter out
 
 // updateEmployeeRole
 const updateEmployeeRole = () => {};
+// inquier PROMPT user for employee to update?
+// inquier which part to update?
 
 // updateEmployeeManager
 const updateEmployeeManager = () => {};
+// same beat.
