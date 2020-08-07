@@ -1,9 +1,4 @@
-// Design the following database schema for:
-
-// PLACED IN employeeTracker.sql
-// Department
-// Role
-// Employee
+// PLACED IN employeeTracker.sql Department, Role, Employee
 
 // DEPENDENCIES==================================
 
@@ -21,16 +16,21 @@ var connection = mysql.createConnection({
 
   // Your password
   password: "!Cupcakes1324",
-  database: "ice_creamDB",
+  database: "employee_TrackerDB",
 });
 
 connection.connect(function (err) {
   if (err) throw err;
-  console.log("connected as id " + connection.threadId + "\n");
-  createProduct();
+start();
 });
 
-// Build a command-line application that at a minimum
+// Start
+const start = async () => {
+  const userChoice = await inquirer.prompt(
+
+  )
+}
+
 
 // allows the user to:
 
