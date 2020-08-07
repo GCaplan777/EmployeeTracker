@@ -1,8 +1,17 @@
 {
-  "name": "employee-tracker",
+  "name": "mysql-emp-tracker",
   "version": "1.0.0",
   "description": "Developers are often tasked with creating interfaces that make it easy for non-developers to view and interact with information stored in databases. Often these interfaces are known as **C**ontent **M**anagement **S**ystems. In this homework assignment, your challenge is to architect and build a solution for managing a company's employees using node, inquirer, and MySQL.",
-  "main": "employeeCRUD.js",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "inquirer": "^7.3.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.4",
+    "run": "^1.4.0",
+    "watch": "^1.0.2"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,10 +24,5 @@
   "bugs": {
     "url": "https://github.com/GCaplan777/EmployeeTracker/issues"
   },
-  "homepage": "https://github.com/GCaplan777/EmployeeTracker#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "inquirer": "^7.3.3",
-    "mysql": "^2.18.1"
-  }
+  "homepage": "https://github.com/GCaplan777/EmployeeTracker#readme"
 }
