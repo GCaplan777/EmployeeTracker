@@ -19,10 +19,15 @@ var connection = mysql.createConnection({
   database: "employee_TrackerDB",
 });
 
-connection.connect(function (err) {
+connection.connect((err) => {
   if (err) throw err;
-  //   start();
+  console.log(`The database is connected on thread ${connection.threadId}`);
+  start();
 });
+
+const start = () => {
+  console.log("The app is started.");
+};
 
 // // Start
 // const start = async () => {
