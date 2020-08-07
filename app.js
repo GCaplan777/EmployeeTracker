@@ -25,6 +25,7 @@ connection.connect((err) => {
   start();
 });
 
+// start
 const start = async () => {
   const { choice } = await inquirer.prompt({
     name: "choice",
@@ -41,116 +42,47 @@ const start = async () => {
       "Exit",
     ],
   });
-  console.log(choice);
+  //   console.log(choice);
+  // };
+
+  // switch case based on user input to pick what to do next
+  switch (choice) {
+    case "View All Employees":
+      return viewAllEmployees();
+    case "View All Employees By Department":
+      return viewAllEmployeesByDept();
+    case "View ALl Employees By Manager":
+      return viewAllEmployeesByManager();
+    case "Add Employee":
+      return addEmployee();
+    case "Remove Employee":
+      return removeEmployee();
+    case "Update Employee Role":
+      return updateEmployeeRole();
+    case "Update Employee Manager":
+      return updateEmployeeManager();
+    default:
+      connection.end();
+  }
 };
 
-// switch case based on user input to pick what to do next
-switch (choice) {
-  case "View All Employees":
-    return viewAllEmployees();
-  case "View All Employees By Department":
-    return viewAllEmployeesByDept();
-  case "View ALl Employees By Manager":
-    return viewAllEmployeesByManager();
-  case "Add Employee":
-    return addEmployee();
-  case "Remove Employee":
-    return removeEmployee();
-  case "Update Employee Role":
-    return updateEmployeeRole();
-  case "Update Employee Manager":
-    return updateEmployeeManager();
-  default:
-    connection.end();
-}
+// viewAllEmployees
+const viewAllEmployees = () => {};
 
-// allows the user to:
+// viewAllEmployeesByDept
+const viewAllEmployeesByDept = () => {};
 
-// Add
-// departments, roles, employees
+// viewAllEmployeesByManager
+const viewAllEmployeesByManager = () => {};
 
-// View
-// departments, roles, employees
+// addEmployee
+const addEmployee = () => {};
 
-// Update employee roles
+// removeEmployee
+const removeEmployee = () => {};
 
-// Bonus points if you're able to:
+// updateEmployeeRole
+const updateEmployeeRole = () => {};
 
-// Update employee managers
-
-// View employees by manager
-
-// Delete departments, roles, and employees
-
-// View the total utilized budget of a department -- ie the combined salaries of all employees in that department
-
-// function createProduct() {
-//   console.log("Inserting a new product...\n");
-//   var query = connection.query(
-//     "INSERT INTO products SET ?",
-//     {
-//       flavor: "Rocky Road",
-//       price: 3.0,
-//       quantity: 50,
-//     },
-//     function (err, res) {
-//       if (err) throw err;
-//       console.log(res.affectedRows + " product inserted!\n");
-//       // Call updateProduct AFTER the INSERT completes
-//       updateProduct();
-//     }
-//   );
-
-//   // logs the actual query being run
-//   console.log(query.sql);
-// }
-
-// function updateProduct() {
-//   console.log("Updating all Rocky Road quantities...\n");
-//   var query = connection.query(
-//     "UPDATE products SET ? WHERE ?",
-//     [
-//       {
-//         quantity: 100,
-//       },
-//       {
-//         flavor: "Rocky Road",
-//       },
-//     ],
-//     function (err, res) {
-//       if (err) throw err;
-//       console.log(res.affectedRows + " products updated!\n");
-//       // Call deleteProduct AFTER the UPDATE completes
-//       deleteProduct();
-//     }
-//   );
-
-//   // logs the actual query being run
-//   console.log(query.sql);
-// }
-
-// function deleteProduct() {
-//   console.log("Deleting all strawberry icecream...\n");
-//   connection.query(
-//     "DELETE FROM products WHERE ?",
-//     {
-//       flavor: "strawberry",
-//     },
-//     function (err, res) {
-//       if (err) throw err;
-//       console.log(res.affectedRows + " products deleted!\n");
-//       // Call readProducts AFTER the DELETE completes
-//       readProducts();
-//     }
-//   );
-// }
-
-// function readProducts() {
-//   console.log("Selecting all products...\n");
-//   connection.query("SELECT * FROM products", function (err, res) {
-//     if (err) throw err;
-//     // Log all results of the SELECT statement
-//     console.log(res);
-//     connection.end();
-//   });
-// }
+// updateEmployeeManager
+const updateEmployeeManager = () => {};
