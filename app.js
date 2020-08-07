@@ -67,7 +67,9 @@ const start = async () => {
 };
 
 // viewAllEmployees
-const viewAllEmployees = () => {};
+const viewAllEmployees = () => {
+  // query for the catogory Employees
+};
 
 // viewAllEmployeesByDept
 const viewAllEmployeesByDept = () => {};
@@ -86,3 +88,14 @@ const updateEmployeeRole = () => {};
 
 // updateEmployeeManager
 const updateEmployeeManager = () => {};
+
+function viewAllEmployees() {
+  connection.query(
+    "SELECT  employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department, CONCAT(manager.first_name,' ', manager.last_name) AS manager FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department on role.department_id = department.id  LEFT JOIN employee manager ON employee.manager_id = manager.id",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      start();
+    }
+  );
+}
