@@ -109,23 +109,51 @@ function viewAllEmployeesByManager() {
 // perhaps use INQUIRER to prompt user to add each line of data?
 // insert into Table with loop?
 
-// function addEmployee() {
-//   console.log("Inserting a new employee...\n");
+function addEmployee() {
+  console.log("Inserting a new employee...\n");
+  var query = connection.query(
+    "INSERT INTO employee SET ?",
+    {
+      first_name: "Charles",
+      last_name: "Barkley",
+      role_id: 3,
+      manager_id: 1,
+    },
+    function (err, res) {
+      if (err) throw err;
+      console.log(res.affectedRows + " employee inserted!\n");
+      // Call updateAddedEmployee AFTER the INSERT completes
+      // updateAddedEmployee();
+    }
+  );
+
+  // logs the actual query being run
+  console.log(query.sql);
+}
+
+// function updateAddedEmployee() {
+//   console.log("Updating all employees...\n");
 //   var query = connection.query(
-//     "INSERT INTO employee SET ?",
-//     {
-//       first_name: "Charles",
-//       last_name: "Barkley",
-//       role_id: 3,
-//       manager_id: 1,
-//     },
+//     "UPDATE employee SET ? WHERE ?",
+//     [
+//       {
+//         quantity: 100,
+//       },
+//       {
+//         flavor: "Rocky Road",
+//       },
+//     ],
 //     function (err, res) {
 //       if (err) throw err;
-//       console.log(res.affectedRows + " product inserted!\n");
-//       // Call updateProduct AFTER the INSERT completes
-
+//       console.log(res.affectedRows + " products updated!\n");
+//       // Call deleteProduct AFTER the UPDATE completes
+//       // deleteProduct();
 //     }
 //   );
+
+//   // logs the actual query being run
+//   console.log(query.sql);
+// }
 
 // removeEmployee
 const removeEmployee = () => {};
