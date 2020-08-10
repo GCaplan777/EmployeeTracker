@@ -105,10 +105,6 @@ function viewAllEmployeesByManager() {
 // addEmployee
 // creating new Array to collect answer for Employee
 const addEmployee = async () => {
-  // connection.query("SELECT id, title FROM role", function (err, res) {
-  //   if (err) throw err;
-  //   console.table(res);
-  // });
   const userInput = await inquirer.prompt([
     {
       type: "input",
@@ -145,41 +141,33 @@ const addEmployee = async () => {
     function (err, res) {
       if (err) throw err;
       console.log(res.affectedRows + " employee inserted!\n");
-      // Call updateAddedEmployee AFTER the INSERT completes
-      // updateAddedEmployee();
     }
   );
   start();
 };
 
-// function updateAddedEmployee() {
-//   console.log("Updating all employees...\n");
-//   var query = connection.query(
-//     "UPDATE employee SET ? WHERE ?",
-//     [
-//       {
-//         quantity: 100,
-//       },
-//       {
-//         flavor: "Rocky Road",
-//       },
-//     ],
-//     function (err, res) {
-//       if (err) throw err;
-//       console.log(res.affectedRows + " products updated!\n");
-//       // Call deleteProduct AFTER the UPDATE completes
-//       // deleteProduct();
-//     }
-//   );
-
-//   // logs the actual query being run
-//   console.log(query.sql);
-// }
-
 // removeEmployee
-const removeEmployee = () => {};
-// create prompt for user to select by employee by ID.
-// Use CRUD delete method and perhaps loop to filter out
+const removeEmployee = async () => {
+  const userInput = await inquirer.prompt([
+    {
+      type: "input",
+      message: "Enter Employee Role_ID",
+      name: "role_id",
+    },
+  ]);
+
+  var query = connection.query(
+    "DELETE FROM products WHERE ?",
+    {
+      role_id: userInput.role_id,
+    },
+    function (err, res) {
+      if (err) throw err;
+      console.log(res.affectedRows + " employee deleted!\n");
+    }
+  );
+  start();
+};
 
 // updateEmployeeRole
 const updateEmployeeRole = () => {};
