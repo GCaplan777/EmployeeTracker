@@ -42,8 +42,6 @@ const start = async () => {
       "Exit",
     ],
   });
-  //   console.log(choice);
-  // };
 
   // switch case based on user input to pick what to do next
   switch (choice) {
@@ -105,19 +103,44 @@ function viewAllEmployeesByManager() {
 }
 
 // addEmployee
-// I have my CRUD create method commented below BUT
-// perhaps use INQUIRER to prompt user to add each line of data?
-// insert into Table with loop?
+// creating new Array to collect answer for Employee
+const addEmployee = async () => {
+  // connection.query("SELECT id, title FROM role", function (err, res) {
+  //   if (err) throw err;
+  //   console.table(res);
+  // });
+  const userInput = await inquirer.prompt([
+    {
+      type: "input",
+      message: "Enter First Name",
+      name: "first_name",
+    },
+    {
+      type: "input",
+      message: "Enter Last Name",
+      name: "last_name",
+    },
+    {
+      type: "input",
+      message:
+        "Enter Employee Role BY NUMBER 1. Manager Production, 2. Engineer Production, 3. Developer Production, 4. Manager Creative Services, 5. Analyst Creative Services, 6. Graphic Arts Creative Services, 7. Manager Marketing, 8. Advertising Marketing, 9. Sales Supervisor Marketing",
+      name: "role_id",
+    },
+    {
+      type: "input",
+      message:
+        "Enter Employee's Manager BY NUMBER 1. Julius Irving, 4 Bobby Jones, 7 Clint Richardson",
+      name: "manager_name",
+    },
+  ]);
 
-function addEmployee() {
-  console.log("Inserting a new employee...\n");
   var query = connection.query(
     "INSERT INTO employee SET ?",
     {
-      first_name: "Charles",
-      last_name: "Barkley",
-      role_id: 3,
-      manager_id: 1,
+      first_name: userInput.first_name,
+      last_name: userInput.last_name,
+      role_id: userInput.role_id,
+      manager_id: userInput.manager_id,
     },
     function (err, res) {
       if (err) throw err;
@@ -126,10 +149,8 @@ function addEmployee() {
       // updateAddedEmployee();
     }
   );
-
-  // logs the actual query being run
-  console.log(query.sql);
-}
+  start();
+};
 
 // function updateAddedEmployee() {
 //   console.log("Updating all employees...\n");
