@@ -151,15 +151,15 @@ const removeEmployee = async () => {
   const userInput = await inquirer.prompt([
     {
       type: "input",
-      message: "Enter Employee Role_ID",
-      name: "role_id",
+      message: "Remove Employee by ID",
+      name: "id",
     },
   ]);
 
   var query = connection.query(
-    "DELETE FROM products WHERE ?",
+    "DELETE FROM employee WHERE ?",
     {
-      role_id: userInput.role_id,
+      id: userInput.id,
     },
     function (err, res) {
       if (err) throw err;
