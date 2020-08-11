@@ -206,5 +206,37 @@ const updateEmployeeRole = async () => {
 };
 
 // updateEmployeeManager
-const updateEmployeeManager = () => {};
-// same beat.
+
+const updateEmployeeManager = async () => {
+  const userInput = await inquirer.prompt([
+    {
+      type: "input",
+      message:
+        "First, select Manager by their ID. 1. Julius Irving, Manager Production, 4. Bobby Jones, Manager Creative Services, 7. Clint Richardson, Manager Marketing",
+      name: "manager_id",
+    },
+    {
+      type: "input",
+      message:
+        "Choose Employee for update by ID. If needed, scroll up for Employee Reference in terminal, or return first to View All Employees to find ID.",
+      name: "id",
+    },
+  ]);
+
+  var query = connection.query(
+    "UPDATE employee SET ? WHERE ?",
+    [
+      {
+        manager_id: userInput.manager_id,
+      },
+      {
+        id: userInput.id,
+      },
+    ],
+    function (err, res) {
+      if (err) throw err;
+      console.log(res.affectedRows + " employee Manager updated!\n");
+    }
+  );
+  start();
+};
