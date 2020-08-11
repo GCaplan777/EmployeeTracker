@@ -3,6 +3,9 @@
 ## Description
 
 A CLI (command line interface) node.js interface with MySQL database for for tracking employees. We can view, add, update and remove employees with options for updating employee roles and managers.
+<br><br>
+SEE BELOW FOR NOTES FOR PHASE 2
+<br><br>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -14,6 +17,7 @@ A CLI (command line interface) node.js interface with MySQL database for for tra
 - [Contributing](#Contributing)
 - [Tests](#Tests)
 - [Questions](#Questions)
+- [Demos, Notes](#Demos_Notes)
 
 ## Installation
 
@@ -44,26 +48,32 @@ https://github.com/gcaplan777
 
 gabriel.caplan@gmail.com
 <br><br>
-Link to full video demo with orginal music "For a Lick and a Promise" <br> Chosen for asynchronic "promise" based theme.
+
+## DEMOS_NOTES
+
+MVP: I went for a first round MVP where functions work, but employee names are now hardcoded.
 <br><br>
-https://youtu.be/P5NM2xLCvDI
+Phase 2: I will go back and utilize arrays and loops so that all edits are based on a series of user input to specific names, roles, IDs, managers, positions that is completely fluid. <br><br>
+In addition, search of All Employees by Dept. or Manager will show only Employees and Dept categories, or Employees and Manager categories.<br><br>
+Currently, the AddEmployee function is not inputing Manager Id.
+<br><br>
+See SCREENSHOT FOR MORE INFO
+<br><br>
+But first; Link to full video demo with orginal music.
+<br><br>
+https://youtu.be/BjeBCJS8oXo
 <br><br>
 No time for full video? Find the music distracting?
 <br><br>
 Gif!
 <br><br>
-![ezgif com-optimize (3)](https://user-images.githubusercontent.com/67020051/88763553-55283800-d141-11ea-82d7-8d696b199fdd.gif)
+![ezgif com-optimize (4)](https://user-images.githubusercontent.com/67020051/89846030-1e451f80-db4e-11ea-9bd2-e2a76b55b5c5.gif)
 <br><br>
-Screenshots
+Screenshots And Reference to Phase 2.
 <br><br>
-Using Inquirer, we prompt the user for data and create a function with switch case to take the answer from question 1 (role: Manager? Engineer? Intern? Finished entering employees?) and collected info into array
+In phase 2, all the hardcoded names will be replaced by arrays and targeted prompts.
+<img width="1013" alt="hw10 screenshot" src="https://user-images.githubusercontent.com/67020051/89845622-fa350e80-db4c-11ea-9b71-a54da38ce976.png">
 <br><br>
-<img width="787" alt="hw8 1" src="https://user-images.githubusercontent.com/67020051/88763181-b4d21380-d140-11ea-80e2-53c1ca649467.png">
+In addition, in phase 2, search of All Employees by Dept. will have option to show only Employee name and Dept. (same with by Manager)
 <br><br>
-The data has been required into our library js files to be sent to tests (run in Jest), and as an instance object of our class constructor, it's back for use in our output function to be generated as HTML.
-<br><br>
-<img width="611" alt="hw8 2" src="https://user-images.githubusercontent.com/67020051/88763299-e8ad3900-d140-11ea-9c1e-cf1e0c460188.png">
-<br><br>
-Class contructor function seen here:
-<br><br>
-<img width="680" alt="hw8 3" src="https://user-images.githubusercontent.com/67020051/88763237-cddac480-d140-11ea-814e-ad1c17fe53d5.png">
+<img width="849" alt="hw10 by dept" src="https://user-images.githubusercontent.com/67020051/89845747-55670100-db4d-11ea-91cb-ba85c64766c6.png">
