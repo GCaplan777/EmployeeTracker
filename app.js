@@ -151,7 +151,8 @@ const removeEmployee = async () => {
   const userInput = await inquirer.prompt([
     {
       type: "input",
-      message: "Remove Employee by ID",
+      message:
+        "Remove Employee by ID. If needed, return first to View All Employees to find ID.",
       name: "id",
     },
   ]);
@@ -170,9 +171,39 @@ const removeEmployee = async () => {
 };
 
 // updateEmployeeRole
-const updateEmployeeRole = () => {};
-// inquier PROMPT user for employee to update?
-// inquier which part to update?
+const updateEmployeeRole = async () => {
+  const userInput = await inquirer.prompt([
+    {
+      type: "input",
+      message:
+        "First, choose Role ID to update Employee. 1. Manager Production, 2. Engineer Production, 3. Developer Production, 4. Manager Creative Services, 5. Analyst Creative Services, 6. Graphic Arts Creative Services, 7. Manager Marketing, 8. Advertising Marketing, 9. Sales Supervisor Marketing.",
+      name: "role_id",
+    },
+    {
+      type: "input",
+      message:
+        "Choose Employee for update by ID. If needed, scroll up for Employee Reference in terminal, or return first to View All Employees to find ID.",
+      name: "id",
+    },
+  ]);
+
+  var query = connection.query(
+    "UPDATE employee SET ? WHERE ?",
+    [
+      {
+        role_id: userInput.role_id,
+      },
+      {
+        id: userInput.id,
+      },
+    ],
+    function (err, res) {
+      if (err) throw err;
+      console.log(res.affectedRows + " employee updated!\n");
+    }
+  );
+  start();
+};
 
 // updateEmployeeManager
 const updateEmployeeManager = () => {};
